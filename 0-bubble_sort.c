@@ -1,7 +1,7 @@
 #include "sort.h"
 
 /**
- * swap - swa' two numbers
+ * swap - swap two numbers
  * @x: first integer
  * @y: second integer
  * Return: nothing
@@ -17,7 +17,7 @@ void swap(int *x, int *y)
 }
 
 /**
- * bubble_sort - sors an array of integers in ascending order
+ * bubble_sort - sorts an array of integers in ascending order
  * using bubble sort
  * @array: an array of integers to sort
  * @size: size of the array
