@@ -1,8 +1,16 @@
 #include "sort.h"
 
+/**
+ * sortinsert - insert  node in a sorted doubly linked list
+ * @list: list to sort
+ * @newNode: new node to be added
+ * Return - nothing
+ */
+
 void sortinsert(listint_t **list, listint_t *newNode)
 {
 	listint_t *tmp;
+
 	if (*list == NULL)
 	{
 		*list = newNode;
@@ -13,7 +21,8 @@ void sortinsert(listint_t **list, listint_t *newNode)
 		newNode->next->prev = newNode;
 		*list = newNode;
 	}
-	else {
+	else
+	{
 		tmp = *list;
 		while (tmp->next !=  NULL && tmp->next->n < newNode->n)
 		{
@@ -41,15 +50,15 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *sorted = NULL;
 	listint_t *tmp = *list;
+
 	while (tmp != NULL)
 	{
 		listint_t *next = tmp->next;
+
 		tmp->prev = tmp->next = NULL;
-		/*print_list(sorted);*/
 		sortinsert(&sorted, tmp);
 		print_list(sorted);
 		tmp = next;
 	}
 	*list = sorted;
 }
-			
