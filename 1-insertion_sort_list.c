@@ -51,6 +51,8 @@ void insertion_sort_list(listint_t **list)
 	listint_t *sorted = NULL;
 	listint_t *tmp = *list;
 
+	if (*list == NULL)
+		return;
 	while (tmp != NULL)
 	{
 		listint_t *next = tmp->next;
