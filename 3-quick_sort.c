@@ -16,6 +16,13 @@ void swap(int *x, int *y)
 	*y = temp;
 }
 
+/**
+ * partition - partition an array
+ * @array: array to partition
+ * @low: start
+ * @high: end
+ * Return: int value
+ */
 int partition(int *array, int low, int high)
 {
 	int j;
@@ -26,7 +33,6 @@ int partition(int *array, int low, int high)
 	{
 		if (array[j] <= pivot)
 		{
-			
 			swap(&array[i], &array[j]);
 			i++;
 		}
@@ -48,6 +54,7 @@ void quick_sort(int *array, size_t size)
 	int low = 0;
 	int high = size - 1;
 	int p;
+
 	if (low < high)
 	{
 		p = partition(array, low, high);
@@ -57,4 +64,3 @@ void quick_sort(int *array, size_t size)
 		quick_sort(array, size);
 	}
 }
-	
