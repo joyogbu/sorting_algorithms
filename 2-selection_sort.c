@@ -28,8 +28,6 @@ void selection_sort(int *array, size_t size)
 {
 	size_t i, j, m;
 
-	if(size < 2)
-		print_array(array, size);
 	for (i = 0; i < size - 1; i++)
 	{
 		m = i;
