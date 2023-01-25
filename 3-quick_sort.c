@@ -21,46 +21,64 @@ void swap(int *x, int *y)
  * @array: array to partition
  * @low: start
  * @high: end
+ * @size: size of the array
  * Return: int value
  */
-int partition(int *array, int low, int high)
+int partition(int *array, int low, int high, size_t size)
 {
-	int j;
+	int j = low;
 	int pivot = array[high];
-	int i = low;
+	int i = low - 1;
 
-	for (j = low; j < high - 1; j++)
+	for (j = low; j < high; j++)
 	{
 		if (array[j] <= pivot)
 		{
-			swap(&array[i], &array[j]);
 			i++;
+			if (array[i] != array[j])
+			{
+				swap(&array[i], &array[j]);
+				print_array(array, size);
+			}
 		}
 	}
-	swap(&array[i + 1], &array[high]);
+	if (array[i + 1] != array[high])
+	{
+		swap(&array[i + 1], &array[high]);
+		print_array(array, size);
+	}
 	return (i + 1);
 }
 
 /**
- * quick_sort - sorts an array of integers in ascending order
- * using quik sort algorithm
+ * quick_sort2 - sorts partitions of array recursively
  * @array: array to sort
- * @size: size of thw arrat
+ * @low: initialiazed integer
+ * @high: last element of the array
+ * @size: size of the array
  * Return: nothing
  */
 
-void quick_sort(int *array, size_t size)
+void quick_sort2(int *array, int low, int high, size_t size)
 {
-	int low = 0;
-	int high = size - 1;
 	int p;
 
 	if (low < high)
 	{
-		p = partition(array, low, high);
-		high = p - 1;
-		quick_sort(array, size);
-		low = p + 1;
-		quick_sort(array, size);
+		p = partition(array, low, high, size);
+		quick_sort2(array, low, p - 1, size);
+		quick_sort2(array, p + 1, high, size);
 	}
+}
+
+/**
+ * quick_sort - sorts an array of integers in ascending order
+ * using quick sort
+ * @array: array to sort
+ * @size: size of ths array
+ * Return: nothing
+ */
+void quick_sort(int *array, size_t size)
+{
+	quick_sort2(array, 0, size - 1, size);
 }
